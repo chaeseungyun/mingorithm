@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.security.AlgorithmConstraints;
 import java.util.logging.XMLFormatter;
 
 public class DFS {
@@ -110,16 +112,17 @@ public class DFS {
 
         // DFS 모드
         boolean DFSAlgorithm(){
-            stack.push(new Point(1,2)); // 시작 지점은 무조건 (1,2)
+            stack.push(new Point(0,1)); // 시작 지점은 무조건 (1,2)
+            System.out.println("현재 스택: " + stack);
             int walkCount = 0; // 이동한 횟수
             while(!stack.isEmpty()){
                 Point now = stack.pop();
                 walkCount++;
                 System.out.println(now);
-                if (map[now.y][now.x] == 'x')
+                if (map[now.y][now.x] == -1)
                     return true;
                 else {
-                    map[now.y][now.x] = '.';
+                    map[now.y][now.x] = 2;
                     if (isValidPos(now.x+1, now.y, map))
                         stack.push(new Point(now.x+1, now.y));
                     if (isValidPos(now.x-1, now.y, map))
@@ -128,7 +131,6 @@ public class DFS {
                         stack.push(new Point(now.x, now.y+1));
                     if (isValidPos(now.x, now.y-1, map))
                         stack.push(new Point(now.x, now.y-1));
-                    System.out.println("현재 스택: " + stack);
                 }
             }
             return false;
@@ -141,12 +143,13 @@ public class DFS {
 
         // 이동할 수 있는 위치인지 확인하는 함수
         boolean isValidPos(int x, int y, int[][] map){
-            int mapsize = 0; // MAP 클래스 정의해야함
-            if (x<0 || y<0 || x>=mapsize || y>=mapsize)
+            int row = map[0].length;
+            int column = map.length;
+            if (x<0 || y<0 || x>=column || y>=row)
                 return false;
             else
-                return map[y][x] == '0' || map[y][x] == 'x';
-                // 이미 지나간 자리도 추가 해야하나?
+                return map[y][x] == 0 || map[y][x] == -1;
+            // 이미 지나간 자리도 추가 해야하나?
         }
 
 
@@ -164,6 +167,15 @@ public class DFS {
         System.out.println(p); // toString 함수 있어서 print로 Point 정보를 바로 출력 가능하다.
         // 예제 끝
 
+        try {
+            int[][] map = ReadMaze.read("test.txt");
+            SearchAlgorithm solver = new SearchAlgorithm();
+            solver.map = map;
+            solver.DFSAlgorithm();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
