@@ -3,10 +3,11 @@ public class Maze {
     private int height;
     private Cell[][] cells;
 
-    public Maze(int width, int height) {
+    public Maze(int width, int height, int[][] maze) {
         this.width = width;
         this.height = height;
-        this.cells = new Cell[height][width];
+        this.cells = new Cell[width][height];
+        initialize(maze);
     }
 
     public Cell getCell(int x, int y) {
@@ -21,26 +22,26 @@ public class Maze {
         return height;
     }
 
-    public void initialize() {
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                cells[y][x] = new Cell(x, y, CellState.EMPTY);
+    public void initialize(int[][] maze) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                cells[x][y] = new Cell(maze[x][y]);
             }
         }
     }
 
     public void createWall(int x, int y) {
-        cells[y][x].setState(CellState.WALL);
+        cells[y][x].setState(Cell.State.WALL);
     }
 
     public void createExit(int x, int y) {
-        cells[y][x].setState(CellState.EXIT);
+        cells[y][x].setState(Cell.State.EXIT);
     }
 
     public void print() {
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                System.out.print(cells[y][x].getState() + " ");
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                System.out.print(cells[x][y].getState() + " ");
             }
             System.out.println();
         }
