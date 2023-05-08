@@ -32,7 +32,7 @@ public class Scanner {
         }
 
         // 스캔 비용을 차감하고, 스캔 횟수를 증가시킨다.
-        mouse.decreaseMana(scanCost);
+        mouse.decreaseMana();
         mouse.increaseScanCount();
     }
 }
