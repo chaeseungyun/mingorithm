@@ -14,6 +14,7 @@ public class Cell {
   public Cell(int isWall) {
     this.isWall = (isWall == 1);
     this.isEmpty = (isWall == 0);
+    this.isExit = (isWall == 2);
     this.isVisited = false;
   }
 
@@ -23,6 +24,10 @@ public class Cell {
 
   public boolean isExit() {
     return isExit;
+  }
+
+  public boolean isEmpty() {
+    return isEmpty;
   }
 
   public boolean isVisited() {
@@ -38,9 +43,9 @@ public class Cell {
       return State.WALL;
     } else if (isExit) {
       return State.EXIT;
-    } else {
+    } else if (isEmpty) {
       return State.EMPTY;
-    }
+    } else return State.VISIT;
   }
 
   public void setState(State state) {

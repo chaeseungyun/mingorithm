@@ -11,7 +11,7 @@ public class Maze {
     }
 
     public Cell getCell(int x, int y) {
-        return cells[y][x];
+        return cells[x][y];
     }
 
     public int getWidth() {
@@ -31,11 +31,11 @@ public class Maze {
     }
 
     public void createWall(int x, int y) {
-        cells[y][x].setState(Cell.State.WALL);
+        cells[x][y].setState(Cell.State.WALL);
     }
 
     public void createExit(int x, int y) {
-        cells[y][x].setState(Cell.State.EXIT);
+        cells[x][y].setState(Cell.State.EXIT);
     }
 
     public void print() {
