@@ -20,10 +20,10 @@ public class Mouse {
 
     public void move(int distance, String direction) { // 쥐 이동 : 이동 거리, 방향, 에너지 등 업데이트
         // 이동 거리와 방향을 업데이트합니다.
-        this.distance += distance;
+        this.distance += 1;
         this.direction = direction;
         // 에너지를 소비합니다.
-        this.energy -= distance;
+        this.energy -= 1;
         this.mana +=0.1;
     }
 
