@@ -14,7 +14,9 @@ public class Cell {
   public Cell(int isWall) {
     this.isWall = (isWall == 1);
     this.isEmpty = (isWall == 0);
-    this.isVisited = false;
+    this.isVisited = (isWall == 2);
+    this.isExit = (isWall == 3);
+
   }
 
   public boolean isWall() {
@@ -29,6 +31,7 @@ public class Cell {
     return isVisited;
   }
 
+  public boolean isEmpty(){return isEmpty;}
   public void visit() {
     this.isVisited = true;
   }
