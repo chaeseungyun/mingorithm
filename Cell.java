@@ -14,6 +14,7 @@ public class Cell {
   public Cell(int isWall) {
     this.isWall = (isWall == 1);
     this.isEmpty = (isWall == 0);
+    this.isExit = (isWall == 2);
     this.isVisited = false;
   }
 
