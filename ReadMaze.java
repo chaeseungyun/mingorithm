@@ -32,7 +32,7 @@ public class ReadMaze {
       }
       if (j!=1 && i!=0) {
         if ((i==0 || i==row-1 || j==0 || j==column-1) && c==0) {
-          maze[i][j] = 2;
+          maze[i][j] = 3;
         } else maze[i][j] = c;
       } else maze[i][j] = c;
       j += 1;
