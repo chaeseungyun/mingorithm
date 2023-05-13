@@ -7,18 +7,27 @@ public class Scanner {
     private int startY;
     private int endX;
     private int endY;
+    Point startpoint; //23.05.13
+    Point endpoint; //23.05.13
 
 
-    public Scanner(Maze maze, Mouse mouse) {
-        this.maze = maze;
+    // public Scanner(Maze maze, Mouse mouse) {
+    //     this.maze = maze;
+    //     this.mouse = mouse;
+    // }
+
+    public Scanner(Mouse mouse) {
+        this.maze = maze; // 이러면 private으로 선언한 게 들어가나..?
         this.mouse = mouse;
     }
 
     // 스캔 기능 구현
-    public void scan(/*int x, int y*/) {
+    public void scan(Point scanpoint) { // //23.05.13 어디서 인자 scanpoint를 전달받지?
         // 스캔할 영역의 좌표를 계산한다.
-        int x = maze.getWidth()-2; // 일단 이렇게 고정해놓음
-        int y = maze.getHeight()-2; // 중점 선택하는 알고리즘 만들면 x, y 전달받아서 할 예정
+        // int x = maze.getWidth()-2; // 일단 이렇게 고정해놓음
+        // int y = maze.getHeight()-2; // 중점 선택하는 알고리즘 만들면 x, y 전달받아서 할 예정
+        int x = scanpoint.x; //23.05.13
+        int y = scanpoint.y; //23.05.13
 
         startX = x - 2;
         startY = y - 2;
@@ -43,12 +52,19 @@ public class Scanner {
         // 스캔 비용을 차감하고, 스캔 횟수를 증가시킨다.
         mouse.decreaseMana();
         mouse.increaseScanCount();
+
+        startpoint = new Point(startX, startY); //23.05.13
+        endpoint = new Point(endX, endY); //23.05.13
+
     }
 
-    public int getStartX () { return startX; } // 이렇게 따로 반환하는 걸로 바꿨는데
-    public int getStartY () { return startY; } // 한꺼번에 return하는 건 잘 모르겠음
-    public int getEndX () { return endX; }
-    public int getEndY () { return endY; }
+    // public int getStartX () { return startX; } // 이렇게 따로 반환하는 걸로 바꿨는데
+    // public int getStartY () { return startY; } // 한꺼번에 return하는 건 잘 모르겠음
+    // public int getEndX () { return endX; }
+    // public int getEndY () { return endY; } 
+
+    public Point getStartPoint() {return startpoint;} //23.05.13
+    public Point getEndPoint() {return endpoint;} //23.05.13
 
 //    방법1. 객체를 이용하여 반환
 //    class MultipleValues {

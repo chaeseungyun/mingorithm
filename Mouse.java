@@ -20,8 +20,8 @@ public class Mouse {
 
     public void move(int distance, String direction) { // 쥐 이동 : 이동 거리, 방향, 에너지 등 업데이트
         // 이동 거리와 방향을 업데이트합니다.
-        this.distance += 1;
-        this.direction = direction;
+//        this.distance += 1;
+//        this.direction = direction; //23.05.13 일단은 distance, direction 없어도 된다고 생각
         // 에너지를 소비합니다.
         this.energy -= 1;
         this.mana +=0.1;
@@ -37,6 +37,9 @@ public class Mouse {
             //Scanner scanner = new Scanner(maze, this);
             //스캔 횟수 증가, 마나 감소 : 스캐너에서 다룸
             //scanner.scan();
+            Scanner scanner = new Scanner(this); //23.05.13
+            scanner.scan(); // 여기서 포인트형 인자를 전달해줘야 하나..? 어케 주지 //23.05.13
+
         }
     }
 
