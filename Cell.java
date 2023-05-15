@@ -50,10 +50,10 @@ public class Cell {
       if(isVisited)
         return State.VISIT;
       else
-        return State.NotRecommended;
+        return State.AVAILABLE;
     }
-    else
-      return State.VISIT;
+    else // 벽도 아니고, 출구도 아니고, 이용 가능한 곳이 아닌.  또는 방문을 했었지만 지금은 이용 가능한 곳이 아닌 추천하지 않는 곳
+      return State.NotRecommended;
   }
 
   // 일관성 있게 vist()를 setState에 합치자.
