@@ -59,7 +59,7 @@ public class SearchAlgorithm {
         if (x<0 || y<0 || x>=maze.getWidth()-1 || y>=maze.getHeight()-1)
             return false;
         else
-            return maze.getCell(x, y).isAvailable() || !maze.getCell(x, y).isVisited();
+            return maze.getCell(x, y).isAvailable() && !maze.getCell(x, y).isVisited();
         // 이미 지나간 자리도 추가 해야하나?
     }
 
