@@ -7,7 +7,7 @@ public class DrawMaze {
     public static void drawMaze(Maze maze) {
         for (int i = 0; i < maze.getWidth(); i++) {
             for (int j = 0; j < maze.getHeight(); j++) {
-                if (maze.getCell(j, i).isEmpty()) {
+                if (maze.getCell(j, i).isAvailable()) {
                     System.out.print("0 ");   // □
                 }
 
@@ -16,11 +16,11 @@ public class DrawMaze {
                 }
 
 
-                if (maze.getCell(j, i).isVisited()) {
+                if (maze.getCell(j, i).isExit()) {
                     System.out.print("2 ");
                 }
 
-                if (maze.getCell(j, i).isExit()) {
+                if (maze.getCell(j, i).isVisited()) {
                     System.out.print("3 ");
                 }
             }
@@ -57,7 +57,7 @@ public class DrawMaze {
 
         for (int i = 0; i < maze.getWidth(); i++) {
             for (int j = 0; j < maze.getHeight(); j++) {
-                if (maze.getCell(j, i).isEmpty()) {
+                if (maze.getCell(j, i).isWall()) {
                     bw.write("□ ");  // □
                 }
 
@@ -66,11 +66,11 @@ public class DrawMaze {
                 }
 
 
-                if (maze.getCell(j, i).isVisited()) {
+                if (maze.getCell(j, i).isExit()) {
                     bw.write("◎ ");    // 지나온길
                 }
 
-                if (maze.getCell(j, i).isExit()) {
+                if (maze.getCell(j, i).isVisited()) {
                     bw.write("X");    // 출구
                 }
             }
